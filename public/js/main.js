@@ -1,24 +1,17 @@
 const chatForm = document.getElementById('chat-form');
 //get the first element with class="example" from the document:
 const chatMessages = document.querySelector('.chat-messages'); 
-const roomName = document.getElementById('room-name');
 const userList = document.getElementById('users');
 
 //get user nane and room from the URL window.location.search
-const { username, room } = Qs.parse(location.search, {
+const { username, password } = Qs.parse(location.search, {
     ignoreQueryPrefix: true
 });
 
 const socket = io();
 
-//join chatroom
-socket.emit('joinRoom', {username, room});
-
-//get room and users
-socket.on('roomUsers', ({room, users}) =>{
-    outputRoomName(room);
-    outputUsers(users);
-})
+//join chat
+socket.emit('joinRoom', {username, password});
 
 //message from server
 socket.on('message', message => {
@@ -58,16 +51,4 @@ function outputMessage(message){
     message.text +
     '</p>';
     document.querySelector('.chat-messages').appendChild(div);
-}
-
-//add room name
-function outputRoomName(room){
-    roomName.innerText = room;
-}
-
-//add users
-function outputUsers(users){
-    userList.innerHTML = `
-    ${users.map(user => `<li>${user.username}</li>`).join('')}
-    `;
 }

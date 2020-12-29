@@ -1,8 +1,8 @@
 const users = [];
 
 // join user to chat
-function userJoin(id, username, room){
-    const user = { id, username, room };
+function userJoin(id, username, password){
+    const user = {id, username, password};
     users.push(user);
     return user;
 }
@@ -13,22 +13,15 @@ function getCurrentUser(id){
 }
 
 // user leave hcat
-function userLeave(id){
+/*function userLeave(id){
     const index = users.findIndex(user => user.id === id);
     if(index !== -1){
         //delete user and return the user
         return users.splice(index, 1)[0];
     }
-}
-
-//Get room users
-function getRoomUsers(room){
-    return users.filter(user => user.room === room);
-}
+}*/
 
 module.exports = {
     userJoin,
-    getCurrentUser,
-    userLeave,
-    getRoomUsers
+    getCurrentUser
 };

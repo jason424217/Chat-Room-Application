@@ -1,6 +1,6 @@
 {
   "name": "chat_room",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "chat room homework for FSE",
   "main": "server.js",
   "scripts": {
@@ -19,7 +19,10 @@
   "homepage": "https://github.com/jason424217/FSE-Web-Application#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "hbs": "^4.1.1",
     "moment": "^2.29.1",
+    "mysql": "^2.18.1",
     "socket.io": "^3.0.4"
   },
   "devDependencies": {
