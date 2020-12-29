@@ -1,0 +1,28 @@
+{
+  "name": "chat_room",
+  "version": "1.0.0",
+  "description": "chat room homework for FSE",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jason424217/FSE-Web-Application.git"
+  },
+  "author": "Ziyue Zhou",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jason424217/FSE-Web-Application/issues"
+  },
+  "homepage": "https://github.com/jason424217/FSE-Web-Application#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "socket.io": "^3.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
