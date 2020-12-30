@@ -13,24 +13,29 @@ const socket = io();
 //join chat
 socket.emit('joinRoom', {username, password});
 
-//message from server
-socket.on('message', message => {
-    console.log(message);
-    outputMessage(message);
+socket.on('wrong_identity', msg => {
+    console.log(msg);
+    window.location.href = "/index.html";
+    alert(msg); 
+    throw msg;
+})
 
-    //scroll down
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-});
-
+socket.on('chatHistory', function(data){
+    //will not ignore non-number index
+    for(let i in data){
+        outputMessage(data[i]);
+    }
+})
 
 //message submit
 chatForm.addEventListener('submit', (e)=>{
+    //stop submit form alert
     e.preventDefault();
 
-    //target is current elemnt and access the element and then id msg and then its vlaue
+    //target is current element event happened and access the element and then id msg and then its vlaue
     const msg = e.target.elements.msg.value;
     
-    //emit the message to server
+    //emit the message to server for server to process 
     socket.emit('chatMessage', msg);
 
     //clear input
@@ -39,6 +44,14 @@ chatForm.addEventListener('submit', (e)=>{
     e.target.elements.msg.focus();
 })
 
+//message processed from server
+socket.on('message', message => {
+    console.log(message);
+    outputMessage(message);
+
+    //scroll down
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+});
 
 //output message to DOM
 function outputMessage(message){
