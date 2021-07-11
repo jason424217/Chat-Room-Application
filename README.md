@@ -1,4 +1,2 @@
 # Chat-Room
-Chat Room Application
-
-Author: Ziyue Zhou
+This Chat Room Application allows multiple users to register/login and chat together.
